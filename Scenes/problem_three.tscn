@@ -1,17 +1,30 @@
-[gd_scene load_steps=6 format=3 uid="uid://bax45o80geffd"]
+[gd_scene load_steps=7 format=3 uid="uid://bax45o80geffd"]
 
-[ext_resource type="Script" path="res://Scripts/Rotate.gd" id="1_354yi"]
+[ext_resource type="Script" uid="uid://cb6x2hoi2j8pm" path="res://Scripts/Rotate.gd" id="1_354yi"]
 [ext_resource type="PackedScene" uid="uid://7le76tsvkmlt" path="res://Scenes/player.tscn" id="2_aa3ml"]
 [ext_resource type="TileSet" uid="uid://dv5pq4cqkyek7" path="res://Scenes/castle_tileset.tres" id="3_0a4x0"]
 [ext_resource type="PackedScene" uid="uid://cj1vyr6kvr67l" path="res://Scenes/crate.tscn" id="4_jxx4j"]
 [ext_resource type="Texture2D" uid="uid://duqvx7htykro6" path="res://Art/tree.png" id="5_5oy7u"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d2xqx"]
+size = Vector2(103.68685, 98.03548)
+
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_354yi")
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("2_aa3ml")]
+position = Vector2(714, 317)
 collision_mask = 3
 movement_speed = 150.0
+
+[node name="RigidBody2D" type="RigidBody2D" parent="CharacterBody2D"]
+mass = 0.956
+gravity_scale = 1.077
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/RigidBody2D"]
+position = Vector2(-0.9969891, 0.95179415)
+scale = Vector2(0.9999996, 1)
+shape = SubResource("RectangleShape2D_d2xqx")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource("3_0a4x0")
@@ -35,15 +48,18 @@ text = "Where there is a tree, there is gravity (a fact established by Isaac New
 Fix them so they work properly and obey the virtual laws of virtual physics."
 
 [node name="Crate2" parent="." instance=ExtResource("4_jxx4j")]
-position = Vector2(376, 376)
+position = Vector2(388, 363)
+gravity_scale = 0.311
 
 [node name="Crate" parent="." instance=ExtResource("4_jxx4j")]
 position = Vector2(400, 448)
+gravity_scale = 1.01
 
 [node name="Tree" type="Sprite2D" parent="."]
-position = Vector2(544, 352)
+position = Vector2(538.00006, 345.00003)
 scale = Vector2(0.296856, 0.296856)
 texture = ExtResource("5_5oy7u")
 
 [node name="Crate3" parent="." instance=ExtResource("4_jxx4j")]
-position = Vector2(392, 296)
+position = Vector2(392, 270)
+gravity_scale = 1.553

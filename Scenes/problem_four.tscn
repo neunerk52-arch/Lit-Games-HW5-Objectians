@@ -1,14 +1,17 @@
-[gd_scene load_steps=8 format=3 uid="uid://krm5k3qbjil6"]
+[gd_scene load_steps=9 format=3 uid="uid://krm5k3qbjil6"]
 
-[ext_resource type="Script" path="res://Scripts/Rotate.gd" id="1_amvju"]
-[ext_resource type="Script" path="res://Scripts/CharacterMovement.gd" id="2_p8r5b"]
+[ext_resource type="Script" uid="uid://cb6x2hoi2j8pm" path="res://Scripts/Rotate.gd" id="1_amvju"]
+[ext_resource type="Script" uid="uid://cnqcmwfbfu4j0" path="res://Scripts/CharacterMovement.gd" id="2_p8r5b"]
 [ext_resource type="Texture2D" uid="uid://w1vm0ib8gkl7" path="res://icon.svg" id="3_apj2e"]
 [ext_resource type="TileSet" uid="uid://dv5pq4cqkyek7" path="res://Scenes/castle_tileset.tres" id="3_goot7"]
 [ext_resource type="PackedScene" uid="uid://cj1vyr6kvr67l" path="res://Scenes/crate.tscn" id="4_onmak"]
 [ext_resource type="Texture2D" uid="uid://duqvx7htykro6" path="res://Art/tree.png" id="5_gwuyb"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_glao0"]
+size = Vector2(103.188385, 101.84271)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n4tdo"]
-size = Vector2(53.8982, 646.778)
+size = Vector2(330.12634, 101.059006)
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_amvju")
@@ -23,6 +26,11 @@ movement_speed = 150.0
 [node name="ParentLogo" type="Sprite2D" parent="CharacterBody2D"]
 scale = Vector2(0.747742, 0.713851)
 texture = ExtResource("3_apj2e")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(0.24926758, -1.4277039)
+scale = Vector2(0.9999996, 1)
+shape = SubResource("RectangleShape2D_glao0")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource("3_goot7")
@@ -46,7 +54,7 @@ text = "Everything is wrong. Godotbot falls through the floor and some kind of f
 Fix the scene so everything is right."
 
 [node name="Crate2" parent="." instance=ExtResource("4_onmak")]
-position = Vector2(376, 376)
+position = Vector2(393, 374)
 gravity_scale = 1.0
 
 [node name="Crate" parent="." instance=ExtResource("4_onmak")]
@@ -61,7 +69,8 @@ texture = ExtResource("5_gwuyb")
 [node name="StaticBody2D" type="StaticBody2D" parent="Tree"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Tree/StaticBody2D"]
-position = Vector2(26.9489, 107.797)
+position = Vector2(518.77, 481.71484)
+scale = Vector2(0.99999976, 0.99999976)
 shape = SubResource("RectangleShape2D_n4tdo")
 
 [node name="Crate3" parent="." instance=ExtResource("4_onmak")]
